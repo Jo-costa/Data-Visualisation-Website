@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <script src="https://kit.fontawesome.com/b41a748a30.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualisation</title>
+</head>
+
+<body>
+
+
+
+    <div id="app">
+
+        <nav>
+
+
+            <button @click="handleFunctions('team')">Team Stats</button> <span>|</span>
+            <button @click="handleFunctions('sentiment') ">Sentiment</button> <span>|</span>
+            <button @click="showPage('results')">Team Results</button> <span>|</span>
+            <button @click="handleFunctions('predictions')">Predictions</button>
+
+        </nav>
+
+
+        
+
+        <div v-if="showTeamStats">
+            <h1>Team Stats</h1>
+
+            <select name="teams" id="seasons" v-model="selectedTeamStats">
+                <option value="">Select Team</option>
+                <option v-for="team in teams">{{team}}</option>
+            </select>
+
+            <select name="season" id="seasons" v-model="selectedSeason" :disabled='selectedTeamStats === ""' @change="getTeamStats">
+                <option value="">Select Season</option>
+
+                <option v-for="season in seasons" :value="season">{{season}}</option>
+
+            </select>
+
+
+            <div class="chart-container">
+
+                <div class="chart-subcontainer">
+                    <div class="label">
+                        <span>Home Goals</span>
+                    </div>
+                    <canvas id="myChart" class="chart"></canvas>
+                </div>
+
+                <div class="chart-subcontainer">
+                    <div class="label label2">
+                        <span>Away Goals</span>
+                    </div>                    
+                    <canvas id="myChart1" class="chart"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <div v-else-if="showSentiment">
+            <h1>Sentiment</h1>
+
+                    <select class="sentiment-team" name="" v-model="selectedTeamSentiment" @change="getArticles">
+                        <option value="">Select Team</option>
+
+                        <option v-for="team in teams">{{team}}</option>
+                    </select>
+            
+
+            <div class="sentimentChart-container">
+                <canvas id="sentimentChart" class="sentiment-chart"></canvas>
+            </div>
+        </div>
+        
+
+        <div v-else-if="showResults">
+            <h1>Results</h1>
+            <select name="teams" id="seasons" v-model="selectedTeamResults" @change="getTeamResults">
+                <option value="">Select Team</option>
+                <option v-for="team in teams">{{team}}</option>
+            </select>
+
+            <div class="chart-container">
+
+                <div class="chart-subcontainer">
+                    <div class="label">
+                        <span>Home Results</span>
+                    </div>
+                    <canvas id="myChart2" class="chart"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+        <div v-else-if="showPredictions">
+            <h1>Predictions</h1>
+        
+            <div class="prediction-container">
+                <div ref="synthetic"></div>
+
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <script src="./main.js">
+    </script>
+    <script>
+
+        
+        
+        
+
+    </script>
+</body>
+
+</html>
