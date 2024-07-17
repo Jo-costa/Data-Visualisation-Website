@@ -4,7 +4,6 @@ Website with a graphical representation of information and data collected from w
 ### Front end Screenshots
 
 ![Screenshot 2024-07-06 174848](https://github.com/user-attachments/assets/4ae2e990-57a4-4d98-98cd-3f1b5e680150)
-
 Figure 1Team Stats page
 
 ![Screenshot 2024-07-06 174909](https://github.com/user-attachments/assets/c4697011-3de6-4eaa-bf2a-913bcfb02d48)
